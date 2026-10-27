@@ -1,0 +1,41 @@
+name: Auto Release on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # リリースを作成する権限
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # コミットメッセージ取得のために履歴を全部取る
+
+      - name: Get Commit Message
+        id: commit_msg
+        run: echo "msg=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+
+      - name: Create ZIP
+        # package/ の中身を MrPresident_JA/ フォルダに入れて ZIP にする（展開するとフォルダ1つになる）。
+        # Oodle（oo2core*.dll）は再配布できないので、紛れ込んでいたら止める
+        run: |
+          if find package -iname 'oo2core*' | grep -q .; then echo "oo2core が入っている"; exit 1; fi
+          mkdir -p dist/MrPresident_JA
+          cp -r package/. dist/MrPresident_JA/
+          cd dist && zip -r ../MrPresident_JA.zip MrPresident_JA
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # タグ名は重複できないのでコミットの ID を入れる
+          tag_name: "release-${{ github.sha }}"
+          name: "${{ steps.commit_msg.outputs.msg }}"
+          files: MrPresident_JA.zip
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

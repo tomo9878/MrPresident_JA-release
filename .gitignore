@@ -1,0 +1,4 @@
+# retoc が初回に自動ダウンロードする Oodle（再配布できない）。テストで実行すると package/retoc に置かれるので必ず除外
+oo2core*.dll
+patch-log.txt
+*.zip
