@@ -8,20 +8,64 @@
 > - 日本語化による不具合を**開発元・販売元に問い合わせないでください**。おかしいと思ったら、まず日本語化を外して英語でも起きるか確かめてください。
 > - 利用は自己責任でお願いします。
 
-## ダウンロード
-
-右の **Releases** から、いちばん新しい `MrPresident_JA.zip` をダウンロードして展開してください。
-
 ## 使い方
 
-1. ゲームを終了しておく
-2. 展開した `MrPresident_JA` フォルダの **`MrPresident_JA.exe`** をダブルクリック
-   - ゲームの場所を自動で探し、日本語化 MOD を作ってゲームの `~mods` フォルダに入れます（1〜2分）
-3. ゲームを起動すると日本語で表示されます
+### 1. ダウンロード
 
-- **ゲームが見つからないと言われたら**: `MrPresident_JA` フォルダごとゲームのフォルダ（`Mr. President`）の中に置いて実行してください。
-- **ゲームがアップデートされたら**: もう一度 `MrPresident_JA.exe` を実行してください。更新で英語が変わった所は自動で英語のまま残ります。
-- **元に戻す（英語に戻す）**: `restore.cmd` をダブルクリック
+1. このページ右側の **Releases** から、いちばん新しいリリース（Latest）を開く
+2. **Assets** にある **`MrPresident_JA.zip`** をクリックしてダウンロード
+
+### 2. 展開
+
+1. ダウンロードした `MrPresident_JA.zip` を右クリック →「**すべて展開**」
+2. 展開先はどこでも構いません（デスクトップなど）。`MrPresident_JA` フォルダが1つできます
+
+> ZIP を開いたまま中の exe を直接実行すると、データが見つからず失敗します。必ず展開してから実行してください。
+
+### 3. 日本語化する
+
+1. **ゲームを終了**しておく（起動中だと日本語化できません）
+2. `MrPresident_JA` フォルダの **`MrPresident_JA.exe`** をダブルクリック
+3. 「Windows によって PC が保護されました」と出たら、「**詳細情報**」→「**実行**」を押す
+   （署名のない exe なので表示されます）
+4. 黒い画面が開き、次のように進みます（1〜2分）
+
+   ```
+   === Mr. President 日本語化（非公式） ===
+   ゲーム: C:\Program Files (x86)\Steam\steamapps\common\Mr. President
+   1/4 ゲームから文字のアセットを取り出しています…
+   2/4 文字を日本語に置き換えています…
+   3/4 日本語フォントを入れています…
+   4/4 MOD を作っています…
+   完了: 文字列表 6712 件・画面の文 839 か所・フォント 16 個を日本語化しました。
+   ```
+
+5. 「完了」と出たら Enter キーで閉じる
+6. Steam からゲームを起動すると日本語で表示されます（ゲーム内の言語設定を変える必要はありません）
+
+初回だけ、データの展開に使う部品（Oodle）を自動でダウンロードするため、インターネット接続が必要です。
+
+### 元に戻す（英語に戻す）
+
+ゲームを終了して、`MrPresident_JA` フォルダの **`restore.cmd`** をダブルクリックします。
+日本語化 MOD（`Content\Paks\~mods\zz_MrPresident_JA_P.*`）が消えて英語に戻ります。
+
+### ゲームがアップデートされたら
+
+ゲームの更新で日本語化が外れたり、一部が英語に戻ったりすることがあります。
+もう一度 **`MrPresident_JA.exe`** を実行してください。更新で英語の文が変わった所は、自動で英語のまま残します（ゲームが壊れることはありません）。
+
+日本語化の新しい版が出たときも、新しい ZIP を展開して exe を実行するだけで上書きされます。
+
+### うまくいかないとき
+
+| 表示・症状 | 対処 |
+|---|---|
+| ゲームのフォルダが見つかりませんでした | `MrPresident_JA` フォルダごとゲームのフォルダ（`Mr. President`）の中に置いて実行する。または、コマンドプロンプトで `MrPresident_JA.exe --game "ゲームのフォルダ"` |
+| ゲームが起動中です | ゲームを終了してから実行する |
+| ファイルに書き込めませんでした | exe を右クリック →「管理者として実行」 |
+| 一部が英語のまま | 翻訳していない所、またはゲームの更新で英語が変わった所です（詳細は exe と同じフォルダの `patch-log.txt`） |
+| ゲームの表示や動作がおかしい | `restore.cmd` で英語に戻して同じことが起きるか確かめる。英語でも起きなければ日本語化の問題なので、開発元ではなくこのリポジトリの Issues へ |
 
 ## 仕組み
 
@@ -54,5 +98,5 @@ Unofficial Japanese translation for **Mr. President: The American Presidency, 20
 - Please **do not report** problems caused by this translation to the developer or publisher.
 - Use at your own risk.
 
-Download `MrPresident_JA.zip` from **Releases**, extract it, close the game, and run `MrPresident_JA.exe`.
+Download `MrPresident_JA.zip` from **Releases**, extract it (do not run it from inside the ZIP), close the game, and run `MrPresident_JA.exe`. If Windows SmartScreen appears, click "More info" → "Run anyway". When it says it's done, press Enter and start the game. No in-game language setting is needed. An internet connection is required on the first run (to download Oodle).
 The package contains no game files. The tool reads text assets from your installed copy of the game, replaces only the displayed text, and writes a mod to `Content\Paks\~mods\zz_MrPresident_JA_P.*`. Run `restore.cmd` to remove it, and re-run the exe after game updates.
