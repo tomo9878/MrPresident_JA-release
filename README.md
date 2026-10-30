@@ -53,9 +53,17 @@
 ### ゲームがアップデートされたら
 
 ゲームの更新で日本語化が外れたり、一部が英語に戻ったりすることがあります。
-もう一度 **`MrPresident_JA.exe`** を実行してください。更新で英語の文が変わった所は、自動で英語のまま残します（ゲームが壊れることはありません）。
+もう一度 **`MrPresident_JA.exe`** を実行してください。更新で英語の文が変わった所は、自動で英語のまま残します。
 
-日本語化の新しい版が出たときも、新しい ZIP を展開して exe を実行するだけで上書きされます。
+ただし、ゲームのエンジン自体が新しくなる大きな更新では、古い日本語化を入れたままだと**ゲームが起動しなくなる**ことがあります。
+そのときは `restore.cmd` で外し、日本語化の新しい版（このページの Releases）を待ってください。
+
+日本語化の新しい版が出たときは、新しい ZIP を展開して exe を実行するだけで上書きされます。
+
+### 更新履歴
+
+- **v2**（2026-10-31）: ゲームの更新（Unreal Engine 5.8）に対応。v1 を入れたままだと更新後のゲームが起動しないので、v2 の exe を実行し直してください
+- **v1**（2026-10-28）: 最初の版
 
 ### うまくいかないとき
 
@@ -64,6 +72,7 @@
 | ゲームのフォルダが見つかりませんでした | `MrPresident_JA` フォルダごとゲームのフォルダ（`Mr. President`）の中に置いて実行する。または、コマンドプロンプトで `MrPresident_JA.exe --game "ゲームのフォルダ"` |
 | ゲームが起動中です | ゲームを終了してから実行する |
 | ファイルに書き込めませんでした | exe を右クリック →「管理者として実行」 |
+| ゲームの更新後に起動しない・すぐ落ちる | 日本語化が古い版の可能性があります。`restore.cmd` で外せば起動します。新しい版の exe を実行し直してください |
 | 一部が英語のまま | 翻訳していない所、またはゲームの更新で英語が変わった所です（詳細は exe と同じフォルダの `patch-log.txt`） |
 | ゲームの表示や動作がおかしい | `restore.cmd` で英語に戻して同じことが起きるか確かめる。英語でも起きなければ日本語化の問題なので、開発元ではなくこのリポジトリの Issues へ |
 
@@ -100,3 +109,5 @@ Unofficial Japanese translation for **Mr. President: The American Presidency, 20
 
 Download `MrPresident_JA.zip` from **Releases**, extract it (do not run it from inside the ZIP), close the game, and run `MrPresident_JA.exe`. If Windows SmartScreen appears, click "More info" → "Run anyway". When it says it's done, press Enter and start the game. No in-game language setting is needed. An internet connection is required on the first run (to download Oodle).
 The package contains no game files. The tool reads text assets from your installed copy of the game, replaces only the displayed text, and writes a mod to `Content\Paks\~mods\zz_MrPresident_JA_P.*`. Run `restore.cmd` to remove it, and re-run the exe after game updates.
+After a major game update (new engine version) an old version of this mod can stop the game from starting; run `restore.cmd` and use the latest release.
+v2 (2026-10-31) supports the game update to Unreal Engine 5.8.
