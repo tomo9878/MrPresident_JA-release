@@ -16,8 +16,14 @@ Mr. President: The American Presidency, 2001-2020 非公式日本語化
 
 ・ゲームの場所が見つからないと言われたら、このフォルダごとゲームのフォルダ（Mr. President）の中に置いて実行してください。
 ・ゲームがアップデートされたら、もう一度 MrPresident_JA.exe を実行してください。
-  更新で英語が変わった所は、自動で英語のまま残ります（ゲームが壊れることはありません）。
+  更新で英語が変わった所は、自動で英語のまま残ります。
+  ただしエンジン自体が新しくなる大きな更新では、古い日本語化を入れたままだとゲームが起動しなくなることがあります。
+  そのときは restore.cmd で外し、日本語化の新しい版を待ってください。
 ・元に戻す（英語に戻す）: restore.cmd をダブルクリック
+
+■ 更新履歴
+・v2（2026-10-31）: ゲームの更新（Unreal Engine 5.8）に対応。v1 を入れたままだと更新後のゲームが起動しないので、v2 の exe を実行し直してください
+・v1（2026-10-28）: 最初の版
 
 ■ 仕組み
 ・この配布物にゲームのデータは入っていません。中身は訳文・日本語フォント・ツールだけです。
@@ -47,3 +53,9 @@ Unofficial Japanese translation for Mr. President: The American Presidency, 2001
 This package contains no game files. MrPresident_JA.exe reads text assets from your own installed copy of the game,
 replaces only the displayed text, and writes a mod to Content\Paks\~mods\zz_MrPresident_JA_P.*.
 The original game files are not modified. Run restore.cmd to remove it. Re-run the exe after game updates.
+After a major game update (new engine version) an old version of this mod can stop the game from starting;
+run restore.cmd and use the latest release.
+
+Changes
+- v2 (2026-10-31): supports the game update to Unreal Engine 5.8
+- v1 (2026-10-28): first release
